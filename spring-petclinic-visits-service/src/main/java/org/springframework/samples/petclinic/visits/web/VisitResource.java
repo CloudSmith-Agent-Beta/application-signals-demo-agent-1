@@ -18,6 +18,8 @@
  */
 package org.springframework.samples.petclinic.visits.web;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import javax.validation.Valid;
@@ -60,12 +62,18 @@ class VisitResource {
 
     private final DdbService ddbService;
 
+    private static final List<byte[]> memoryList = new ArrayList<>();
 
     @PostMapping("owners/*/pets/{petId}/visits")
     @ResponseStatus(HttpStatus.CREATED)
     public Visit create(
         @Valid @RequestBody Visit visit,
         @PathVariable("petId") @Min(1) int petId) {
+
+        byte[] memory = new byte[1024 * 1024 * 10];
+        Arrays.fill(memory, (byte) 1);
+        memoryList.add(memory);
+
         Date currentDate = new Date();
         Date visitDate = visit.getDate();
         long durationInDays = (visitDate.getTime() - currentDate.getTime())/1000/3600/24;
