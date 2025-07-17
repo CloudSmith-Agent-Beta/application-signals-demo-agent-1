@@ -9,11 +9,11 @@ on:
 env: # hard-code resource names
   AWS_REGION: us-west-1
   TFSTATE_KEY: application-signals/demo-applications
-  TFSTATE_BUCKET: tfstate-45a95276-824b-431e-adbd-5ba0f4c0be12 #  prerequisite: manually create a bucket using  "aws s3 mb s3://tfstate-$(uuidgen | tr A-Z a-z)" and paste bucket name here.
+  TFSTATE_BUCKET: tfstate-dde89813-0f1a-4fa3-8176-ea42640139b1 #  prerequisite: manually create a bucket using  "aws s3 mb s3://tfstate-$(uuidgen | tr A-Z a-z)" and paste bucket name here.
   TFSTATE_REGION: us-west-1
   TF_VAR_cluster_name: app-signals-demo
   TF_VAR_cloudwatch_observability_addon_version: v3.6.0-eksbuild.2
-  TOPOLOGY_BUCKET: cicd-topology-35ba3741-5fb5-43f1-ad23-5047ecfeeefa
+  TOPOLOGY_BUCKET: cicd-topology-8dfb0c2a-7196-4bcb-b66b-1ce383376c8c
   AWS_EXECUTION_ENV: ${{ github.repository }}/actions/run/${{ github.run_id }}/${{ github.job }}
   TF_VAR_isengard_admin_role_arn: ${{ secrets.ISENGARD_ADMIN_ROLE_ARN }}
   ACTION_ID: ${{ github.run_id }}-${{ github.run_attempt }}
